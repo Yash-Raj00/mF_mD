@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getStories, addStory, deleteStory, updateStory, getStory } from "../handlers/story";
+import { getStories, addStory, deleteStory, updateStory, getStory } from "./story.controller";
 
 const getStoriesRouter = Router();
 
