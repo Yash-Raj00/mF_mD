@@ -6,10 +6,10 @@ import { getStoriesRouter } from "./api";
 const app = express();
 
 // Middlewares
-app.use(cors({
-  origin: "https://mf-md-achs.onrender.com"
-}
-))
+// app.use(cors({
+//   origin: "https://mf-md-achs.onrender.com"
+// }
+// ))
 app.options('*', cors())
 app.use(express.json());
 
