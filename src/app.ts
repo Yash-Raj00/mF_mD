@@ -6,9 +6,7 @@ import { getStoriesRouter } from "./api";
 const app = express();
 
 // Middlewares
-app.use(cors({
-  origin: "http://localhost:5173",
-}));
+app.use(cors());
 app.use(express.json());
 
 const port = process.env.APP_PORT || 3001;
