@@ -7,7 +7,7 @@ const app = express();
 
 // Middlewares
 app.use(cors({
-  origin: "https://mf-md-achs.onrender.com",
+  origin: process.env.NODE_ENV,
 }));
 app.use(express.json());
 
