@@ -9,7 +9,8 @@ const cors_1 = __importDefault(require("cors"));
 const api_1 = require("./api");
 const app = (0, express_1.default)();
 // Middlewares
-app.use(cors());
+app.use((0, cors_1.default)());
+// app.options('*', cors())
 app.use(express_1.default.json());
 const port = process.env.APP_PORT || 3001;
 app.get("/", (req, res, next) => {

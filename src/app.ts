@@ -6,10 +6,7 @@ import { getStoriesRouter } from "./api";
 const app = express();
 
 // Middlewares
-app.use(cors({
-  origin: "*"
-}
-))
+app.use(cors());
 // app.options('*', cors())
 app.use(express.json());
 
