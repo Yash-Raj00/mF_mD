@@ -8,25 +8,19 @@ export async function getStories(req: Request, res: Response) {
     await connectToDB();
     const stories = await Story.find();
     if (!stories.length) {
-      res.header({
-        'Access-Control-Allow-Origin': 'https://mf-md-achs.onrender.com/',
-      }).status(404).json({
+      res.status(404).json({
         status: "empty",
         message: "No stories found",
       });
       return;
     }
-    res.header({
-        'Access-Control-Allow-Origin': 'https://mf-md-achs.onrender.com/',
-      }).status(200).json({
+    res.status(200).json({
       status: "success",
       message: "Stories found successfully",
       data: stories,
     });
   } catch (error: any) {
-    res.header({
-        'Access-Control-Allow-Origin': 'https://mf-md-achs.onrender.com/',
-      }).status(500).json({
+    res.status(500).json({
       status: "error",
       message: "Error occurred while fetching stories",
       error: error.message,
@@ -40,25 +34,19 @@ export async function getStory(req: Request, res: Response) {
     const id = req.params.id;
     const storyFound = await Story.find({ id });
     if (!storyFound.length) {
-      res.header({
-        'Access-Control-Allow-Origin': 'https://mf-md-achs.onrender.com/',
-      }).status(404).json({
+      res.status(404).json({
         status: "error",
         message: "Story not found",
       });
       return;
     }
-    res.header({
-        'Access-Control-Allow-Origin': 'https://mf-md-achs.onrender.com/',
-      }).status(200).json({
+    res.status(200).json({
       status: "success",
       message: "Story found successfully",
       data: storyFound,
     });
   } catch (error: any) {
-    res.header({
-        'Access-Control-Allow-Origin': 'https://mf-md-achs.onrender.com/',
-      }).status(500).json({
+    res.status(500).json({
       status: "error",
       message: "Error occurred while adding story",
       error: error.message,
@@ -72,9 +60,7 @@ export async function addStory(req: Request, res: Response) {
     const newStory = new Story(req.body);
     console.log(newStory);
     const addedResponse = await newStory.save();
-    res.header({
-        'Access-Control-Allow-Origin': 'https://mf-md-achs.onrender.com/',
-      }).status(200).json({
+    res.status(200).json({
       ok: true,
       status: "success",
       message: "Story added successfully",
@@ -82,9 +68,7 @@ export async function addStory(req: Request, res: Response) {
     });
   } catch (error: any) {
     console.log("erroryy:", error.message);
-    res.header({
-        'Access-Control-Allow-Origin': 'https://mf-md-achs.onrender.com/',
-      }).status(500).json({
+    res.status(500).json({
       ok: false,
       status: "error",
       message: "Error occurred while adding story",
@@ -100,18 +84,14 @@ export async function deleteStory(req: Request, res: Response) {
     console.log(id);
     const deletedRes = await Story.findByIdAndDelete(id);
     if (!deletedRes) {
-      res.header({
-        'Access-Control-Allow-Origin': 'https://mf-md-achs.onrender.com/',
-      }).status(404).json({
+      res.status(404).json({
         ok: false,
         status: "error",
         message: "Story not found",
       });
       return;
     }
-    res.header({
-        'Access-Control-Allow-Origin': 'https://mf-md-achs.onrender.com/',
-      }).status(200).json({
+    res.status(200).json({
       ok: true,
       status: "success",
       message: "Story deleted successfully",
@@ -119,9 +99,7 @@ export async function deleteStory(req: Request, res: Response) {
     });
   } catch (error: any) {
     console.error(error.message);
-    res.header({
-        'Access-Control-Allow-Origin': 'https://mf-md-achs.onrender.com/',
-      }).status(500).json({
+    res.status(500).json({
       ok: false,
       status: "error",
       message: "Error occurred while deleting story",
@@ -139,27 +117,21 @@ export async function updateStory(req: Request, res: Response) {
     });
     if (!updatedRes) {
       console.log("not found");
-      res.header({
-        'Access-Control-Allow-Origin': 'https://mf-md-achs.onrender.com/',
-      }).status(404).json({
+      res.status(404).json({
         status: "error",
         message: "Story not found",
       });
       return;
     }
     console.log("----:", updatedRes);
-    res.header({
-        'Access-Control-Allow-Origin': 'https://mf-md-achs.onrender.com/',
-      }).status(200).json({
+    res.status(200).json({
       status: "success",
       message: "Story updated successfully",
       data: updatedRes,
     });
   } catch (error: any) {
     console.error(error.message);
-    res.header({
-        'Access-Control-Allow-Origin': 'https://mf-md-achs.onrender.com/',
-      }).status(500).json({
+    res.status(500).json({
       status: "error",
       message: "Error occurred while updating story",
       error: error.message,

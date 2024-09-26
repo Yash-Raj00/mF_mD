@@ -7,8 +7,10 @@ const app = express();
 
 // Middlewares
 app.use(cors({
-  origin : "*"
-}));
+  origin: "https://mf-md-achs.onrender.com"
+}
+))
+app.options('*', cors())
 app.use(express.json());
 
 const port = process.env.APP_PORT || 3001;
